@@ -173,15 +173,15 @@ export const ChatBox = forwardRef<ChatBoxHandle, ChatBoxProps>(
 
     return (
       <div className="flex h-full min-h-0 w-full min-w-0 flex-col overflow-hidden border-l border-white/10 bg-zinc-950/98 shadow-[inset_1px_0_0_rgba(255,255,255,0.04)]">
-        <header className="flex shrink-0 flex-wrap items-center justify-between gap-1 border-b border-white/10 px-3 py-2">
-          <h3 className="text-sm font-semibold tracking-wide text-cyan-100">
+        <header className="flex shrink-0 flex-wrap items-center justify-between gap-1 border-b border-white/10 py-2 pl-3 pr-[4.75rem]">
+          <h3 className="min-w-0 flex-1 truncate text-sm font-semibold tracking-wide text-cyan-100">
             Galaxy chat
           </h3>
           <button
             type="button"
             onClick={clearHistory}
             disabled={messages.length === 0 && !error}
-            className="rounded-lg px-2 py-1 text-xs text-white/60 hover:bg-white/10 hover:text-white/90 disabled:opacity-30"
+            className="shrink-0 rounded-lg px-2 py-1 text-xs text-white/60 hover:bg-white/10 hover:text-white/90 disabled:opacity-30"
           >
             Clear
           </button>
