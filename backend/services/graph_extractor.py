@@ -9,7 +9,11 @@ from pathlib import Path
 import google.generativeai as genai
 
 PROMPTS_DIR = Path(__file__).resolve().parent.parent / "prompts"
-MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+
+
+def _resolve_model_name(explicit: str | None) -> str:
+    name = (explicit or os.environ.get("GEMINI_MODEL") or "gemini-2.0-flash").strip()
+    return name or "gemini-2.0-flash"
 
 
 def _load_extract_prompt(text: str) -> str:
@@ -51,16 +55,17 @@ def _normalize_graph(raw: dict) -> dict:
     return {"nodes": out_nodes, "links": out_links}
 
 
-def extract_graph_from_text(text: str) -> dict:
+def extract_graph_from_text(text: str, *, model_name: str | None = None) -> dict:
     api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         raise RuntimeError("GEMINI_API_KEY environment variable is not set")
 
     genai.configure(api_key=api_key)
     prompt = _load_extract_prompt(text)
+    resolved = _resolve_model_name(model_name)
 
     model = genai.GenerativeModel(
-        model_name=MODEL_NAME,
+        model_name=resolved,
         generation_config=genai.GenerationConfig(
             response_mime_type="application/json",
             temperature=0.2,

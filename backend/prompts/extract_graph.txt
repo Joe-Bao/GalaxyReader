@@ -1,4 +1,4 @@
-You are a knowledge extraction engine. Read the text below and extract core entities and relationships between them.
+You are a knowledge extraction engine. Read the text below and extract core entities and relationships.
 
 Rules:
 1. Output must be a single valid JSON object. Do not wrap it in markdown fences.
@@ -7,13 +7,14 @@ Rules:
    - "id": string, unique lowercase_snake_case id, e.g. "apple_inc"
    - "name": short display name for the entity (prefer English; use the document language only if essential)
    - "group": exactly one of: company, finance, product, risk, region, tech, person, org, metric, event, other
-   - "summary": one or two short sentences describing what this entity means in the document (keep under ~280 characters)
+   - "summary": a plain-language explanation for non-experts. Keep it short, concrete, and easy to read (<= 180 characters). Avoid jargon.
 4. links: each item has:
    - "source": id of a node in nodes
    - "target": id of a node in nodes
    - "label": short relationship label (a few words)
 5. At most 30 nodes and 50 links.
 6. Prefer concepts and relations that best capture the document’s main ideas (causal, hierarchical, influence, etc.).
+7. Prioritize user readability over academic precision in "summary" and "label".
 
 Text to analyze:
 ---

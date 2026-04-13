@@ -47,12 +47,30 @@ export function GraphCanvas({
   useEffect(() => {
     const el = wrapRef.current;
     if (!el || typeof ResizeObserver === "undefined") return;
-    const ro = new ResizeObserver(() => {
-      setDims({ width: el.clientWidth, height: el.clientHeight });
-    });
+
+    let raf = 0;
+    const measure = () => {
+      raf = 0;
+      const w = Math.max(0, Math.floor(el.clientWidth));
+      const h = Math.max(0, Math.floor(el.clientHeight));
+      setDims((prev) =>
+        prev.width === w && prev.height === h ? prev : { width: w, height: h }
+      );
+    };
+
+    const schedule = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(measure);
+    };
+
+    const ro = new ResizeObserver(schedule);
     ro.observe(el);
-    setDims({ width: el.clientWidth, height: el.clientHeight });
-    return () => ro.disconnect();
+    measure();
+
+    return () => {
+      ro.disconnect();
+      if (raf) window.cancelAnimationFrame(raf);
+    };
   }, []);
 
   const data = useMemo(
@@ -106,7 +124,10 @@ export function GraphCanvas({
   );
 
   return (
-    <div ref={wrapRef} className="absolute inset-0 h-full w-full">
+    <div
+      ref={wrapRef}
+      className="absolute inset-0 min-h-0 min-w-0 overflow-hidden"
+    >
       <ForceGraph3D
         ref={fgRef}
         graphData={data}

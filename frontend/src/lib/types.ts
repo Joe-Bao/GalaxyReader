@@ -27,8 +27,37 @@ export interface ChatRequest {
   question: string;
   node_name?: string;
   node_summary?: string;
+  /** When set, overrides server ``GEMINI_MODEL`` for this request. */
+  gemini_model?: string;
+}
+
+export interface GeminiModelInfo {
+  id: string;
+  name: string;
+  display_name: string;
+  description: string;
+}
+
+export interface GeminiModelsResponse {
+  models: GeminiModelInfo[];
 }
 
 export interface ChatResponse {
   answer: string;
+}
+
+export interface DocumentTextResponse {
+  text: string;
+}
+
+export interface SummarizeRequest {
+  doc_id: string;
+  node_name?: string;
+  node_summary?: string;
+  keywords?: string[];
+  gemini_model?: string;
+}
+
+export interface SummarizeResponse {
+  summary: string;
 }

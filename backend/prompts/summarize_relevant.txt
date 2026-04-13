@@ -1,0 +1,18 @@
+You help a reader understand a PDF excerpt in plain English.
+
+Focus:
+- Graph node name: {node_name}
+- Node summary (from graph): {node_summary}
+- Extra keywords (may be empty): {keywords}
+
+Document excerpt:
+---
+{document_text}
+---
+
+Task:
+1) Write a short, easy-to-read summary (max ~120 words) of what the excerpt says that is most relevant to the focus above.
+2) Stay grounded: if the excerpt does not mention the focus, say that clearly.
+3) No bullet list required; short paragraphs are OK.
+
+Output plain text only (no JSON, no markdown fences).

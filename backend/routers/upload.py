@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import uuid
 
-from fastapi import APIRouter, File, HTTPException, UploadFile
+from typing import Annotated
+
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
 from document_store import DOCUMENT_STORE
 from services.graph_extractor import extract_graph_from_text
@@ -12,7 +14,10 @@ router = APIRouter()
 
 
 @router.post("/upload")
-async def upload_pdf(file: UploadFile = File(...)) -> dict:
+async def upload_pdf(
+    file: UploadFile = File(...),
+    gemini_model: Annotated[str | None, Form()] = None,
+) -> dict:
     if not file.filename or not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Please upload a PDF file.")
 
@@ -29,7 +34,7 @@ async def upload_pdf(file: UploadFile = File(...)) -> dict:
         )
 
     try:
-        graph = extract_graph_from_text(text)
+        graph = extract_graph_from_text(text, model_name=gemini_model)
     except RuntimeError as e:
         raise HTTPException(status_code=503, detail=str(e)) from e
     except ValueError as e:
