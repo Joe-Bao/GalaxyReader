@@ -2,81 +2,81 @@
   "nodes": [
     {
       "id": "apple",
-      "name": "苹果公司",
+      "name": "Apple Inc.",
       "group": "company",
-      "summary": "全球消费电子与软件巨头，总部位于加州库比蒂诺，以 iPhone、Mac 与服务生态著称。"
+      "summary": "Global consumer electronics and software company based in Cupertino; known for iPhone, Mac, and services."
     },
     {
       "id": "revenue",
-      "name": "总营收",
+      "name": "Total revenue",
       "group": "finance",
-      "summary": "最新财季营收同比增长，服务与可穿戴业务贡献增量。"
+      "summary": "Latest quarter revenue grew year over year; services and wearables added incremental contribution."
     },
     {
       "id": "iphone",
-      "name": "iPhone 产品线",
+      "name": "iPhone product line",
       "group": "product",
-      "summary": "旗舰智能手机系列，仍是硬件收入的核心支柱。"
+      "summary": "Flagship smartphone family; still the core pillar of hardware revenue."
     },
     {
       "id": "services",
-      "name": "服务业务",
+      "name": "Services segment",
       "group": "finance",
-      "summary": "App Store、iCloud、Apple Music 等订阅与高毛利业务。"
+      "summary": "Subscriptions and high-margin businesses: App Store, iCloud, Apple Music, and more."
     },
     {
       "id": "risk",
-      "name": "供应链风险",
+      "name": "Supply chain risk",
       "group": "risk",
-      "summary": "地缘政治与单一区域制造集中度带来的交付与成本不确定性。"
+      "summary": "Geopolitics and manufacturing concentration create delivery and cost uncertainty."
     },
     {
       "id": "china",
-      "name": "大中华区",
+      "name": "Greater China",
       "group": "region",
-      "summary": "重要销售市场与制造配套区域，对需求波动敏感。"
+      "summary": "Major sales market and manufacturing ecosystem; sensitive to demand swings."
     },
     {
       "id": "margin",
-      "name": "毛利率",
+      "name": "Gross margin",
       "group": "finance",
-      "summary": "产品结构优化推动整体盈利能力维持高位。"
+      "summary": "Product mix improvements help keep overall profitability strong."
     },
     {
       "id": "ai",
-      "name": "端侧 AI",
+      "name": "On-device AI",
       "group": "tech",
-      "summary": "在设备上部署生成式能力，强化隐私与差异化体验。"
+      "summary": "Generative capabilities on devices for privacy and differentiated experiences."
     },
     {
       "id": "regulation",
-      "name": "监管合规",
+      "name": "Regulatory compliance",
       "group": "risk",
-      "summary": "反垄断、数据隐私与区域立法对平台与分销的影响。"
+      "summary": "Antitrust, privacy, and regional laws affecting platforms and distribution."
     },
     {
       "id": "cash",
-      "name": "现金储备",
+      "name": "Cash position",
       "group": "finance",
-      "summary": "充裕流动性支撑回购、股息与研发投入。"
+      "summary": "Strong liquidity backing buybacks, dividends, and R&D."
     }
   ],
   "links": [
-    { "source": "apple", "target": "revenue", "label": "披露" },
-    { "source": "apple", "target": "iphone", "label": "核心产品" },
-    { "source": "iphone", "target": "revenue", "label": "驱动增长" },
-    { "source": "services", "target": "revenue", "label": "贡献占比提升" },
-    { "source": "apple", "target": "services", "label": "战略重点" },
-    { "source": "apple", "target": "risk", "label": "面临" },
-    { "source": "china", "target": "revenue", "label": "区域销售" },
-    { "source": "risk", "target": "china", "label": "关联" },
-    { "source": "iphone", "target": "margin", "label": "影响" },
-    { "source": "services", "target": "margin", "label": "拉升" },
-    { "source": "apple", "target": "ai", "label": "投入方向" },
-    { "source": "ai", "target": "iphone", "label": "赋能" },
-    { "source": "regulation", "target": "services", "label": "约束" },
-    { "source": "apple", "target": "regulation", "label": "受监管" },
-    { "source": "cash", "target": "apple", "label": "财务实力" },
-    { "source": "revenue", "target": "cash", "label": "支撑" }
+    { "source": "apple", "target": "revenue", "label": "reports" },
+    { "source": "apple", "target": "iphone", "label": "core product" },
+    { "source": "iphone", "target": "revenue", "label": "drives growth" },
+    { "source": "services", "target": "revenue", "label": "rising share" },
+    { "source": "apple", "target": "services", "label": "strategic focus" },
+    { "source": "apple", "target": "risk", "label": "faces" },
+    { "source": "china", "target": "revenue", "label": "regional sales" },
+    { "source": "risk", "target": "china", "label": "linked to" },
+    { "source": "iphone", "target": "margin", "label": "affects" },
+    { "source": "services", "target": "margin", "label": "lifts" },
+    { "source": "apple", "target": "ai", "label": "investing in" },
+    { "source": "ai", "target": "iphone", "label": "powers" },
+    { "source": "regulation", "target": "services", "label": "constrains" },
+    { "source": "apple", "target": "regulation", "label": "subject to" },
+    { "source": "cash", "target": "apple", "label": "financial strength" },
+    { "source": "revenue", "target": "cash", "label": "supports" }
   ]
 }

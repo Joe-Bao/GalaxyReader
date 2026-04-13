@@ -10,7 +10,7 @@ const ForceGraph3D = dynamic(() => import("react-force-graph-3d"), {
   ssr: false,
   loading: () => (
     <div className="flex h-full w-full items-center justify-center bg-black text-sm text-cyan-200/80">
-      正在唤醒 3D 引擎…
+      Starting 3D engine…
     </div>
   ),
 });

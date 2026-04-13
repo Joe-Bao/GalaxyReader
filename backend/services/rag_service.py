@@ -20,8 +20,8 @@ def _load_rag_prompt(
     node_summary: str | None,
 ) -> str:
     template = (PROMPTS_DIR / "rag_qa.txt").read_text(encoding="utf-8")
-    nn = node_name or "（未从图谱指定）"
-    ns = node_summary or "（无）"
+    nn = node_name or "(no graph node selected)"
+    ns = node_summary or "(none)"
     doc = document_text[:MAX_CONTEXT_CHARS]
     return (
         template.replace("{document_text}", doc)
@@ -44,7 +44,7 @@ def answer_question(
 
     genai.configure(api_key=api_key)
     prompt = _load_rag_prompt(
-        document_text=document_text or "（无文档内容）",
+        document_text=document_text or "(no document content)",
         question=question,
         node_name=node_name,
         node_summary=node_summary,
@@ -55,4 +55,4 @@ def answer_question(
         generation_config=genai.GenerationConfig(temperature=0.3),
     )
     response = model.generate_content(prompt)
-    return (response.text or "").strip() or "（模型未返回内容）"
+    return (response.text or "").strip() or "(model returned no text)"

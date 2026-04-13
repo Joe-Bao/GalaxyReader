@@ -30,12 +30,12 @@ export default function Home() {
     (async () => {
       try {
         const res = await fetch(MOCK_PATH);
-        if (!res.ok) throw new Error("无法加载演示图谱");
+        if (!res.ok) throw new Error("Could not load demo graph");
         const data = (await res.json()) as GraphData;
         if (!cancelled) setGraphData(data);
       } catch (e) {
         if (!cancelled)
-          setLoadError(e instanceof Error ? e.message : "加载失败");
+          setLoadError(e instanceof Error ? e.message : "Load failed");
       }
     })();
     return () => {
@@ -48,7 +48,7 @@ export default function Home() {
     setChatOpen(true);
     setAutoQuestion({
       id: `${node.id}-${Date.now()}`,
-      question: `帮我详细解释一下文中提到的「${node.name}」指的是什么？`,
+      question: `In the document, what does "${node.name}" refer to? Explain in detail.`,
       node_name: node.name,
       node_summary: node.summary,
     });
@@ -69,7 +69,7 @@ export default function Home() {
       setDocId(res.doc_id);
       setSelectedNode(null);
     } catch (e) {
-      setLoadError(e instanceof Error ? e.message : "上传失败");
+      setLoadError(e instanceof Error ? e.message : "Upload failed");
     } finally {
       setLoading(false);
     }
@@ -98,7 +98,7 @@ export default function Home() {
               GalaxyReader
             </h1>
             <p className="text-[11px] text-white/45 md:text-xs">
-              Infinite 3D RAG · 知识星系
+              Infinite 3D RAG · knowledge galaxy
             </p>
           </div>
           <FileUpload disabled={loading} onFile={handleUpload} />
@@ -110,7 +110,7 @@ export default function Home() {
         />
 
         <footer className="text-center text-[10px] text-white/40 md:text-xs">
-          拖拽旋转 · 滚轮缩放 · 点击节点查看详情并触发对话
+          Drag to rotate · scroll to zoom · click a node for details and chat
         </footer>
       </div>
 

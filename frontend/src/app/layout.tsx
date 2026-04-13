@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GalaxyReader — 3D 知识图谱",
-  description: "Infinite 3D RAG：PDF 上传、知识抽取与 3D 星系阅读",
+  title: "GalaxyReader — 3D knowledge graph",
+  description:
+    "Infinite 3D RAG: PDF upload, knowledge extraction, and 3D galaxy reading",
 };
 
 export default function RootLayout({

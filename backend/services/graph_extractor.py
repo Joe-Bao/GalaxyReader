@@ -44,7 +44,7 @@ def _normalize_graph(raw: dict) -> dict:
             continue
         src = str(link.get("source", ""))
         tgt = str(link.get("target", ""))
-        label = str(link.get("label") or "关联")
+        label = str(link.get("label") or "related")
         if src in id_set and tgt in id_set and src != tgt:
             out_links.append({"source": src, "target": tgt, "label": label})
 

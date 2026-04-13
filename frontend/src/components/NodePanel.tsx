@@ -16,7 +16,7 @@ export function NodePanel({ node, onClose }: NodePanelProps) {
         <div className="mb-3 flex items-start justify-between gap-2">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300/90">
-              节点
+              Node
             </p>
             <h2 className="mt-1 text-lg font-semibold leading-tight text-white">
               {node.name}
@@ -26,7 +26,7 @@ export function NodePanel({ node, onClose }: NodePanelProps) {
             type="button"
             onClick={onClose}
             className="rounded-lg border border-white/20 bg-white/5 px-2 py-1 text-xs text-white/80 transition hover:bg-white/15"
-            aria-label="关闭"
+            aria-label="Close"
           >
             ✕
           </button>

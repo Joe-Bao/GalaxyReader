@@ -14,17 +14,18 @@ router = APIRouter()
 @router.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)) -> dict:
     if not file.filename or not file.filename.lower().endswith(".pdf"):
-        raise HTTPException(status_code=400, detail="请上传 PDF 文件")
+        raise HTTPException(status_code=400, detail="Please upload a PDF file.")
 
     raw = await file.read()
     if not raw:
-        raise HTTPException(status_code=400, detail="空文件")
+        raise HTTPException(status_code=400, detail="Empty file.")
 
     text = extract_pdf_text(raw, max_pages=10)
     if len(text) < 50:
         raise HTTPException(
             status_code=400,
-            detail="未能从 PDF 前 10 页提取足够文本（可能为扫描件或空白页）",
+            detail="Could not extract enough text from the first 10 pages "
+            "(scanned PDFs or blank pages may cause this).",
         )
 
     try:

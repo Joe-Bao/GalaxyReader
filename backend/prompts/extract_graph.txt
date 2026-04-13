@@ -1,21 +1,21 @@
-你是一个知识抽取引擎。请阅读以下文本，提取核心实体(Entities)和实体间的关系(Relationships)。
+You are a knowledge extraction engine. Read the text below and extract core entities and relationships between them.
 
-要求：
-1. 输出必须是合法 JSON 对象，不要包含 markdown 代码围栏。
-2. JSON 顶层包含两个键："nodes" 和 "links"。
-3. nodes 数组：每个元素包含字段：
-   - "id": 字符串，英文小写+下划线唯一标识，如 "apple_inc"
-   - "name": 实体中文或常用显示名
-   - "group": 必须从以下之一选取：company, finance, product, risk, region, tech, person, org, metric, event, other
-   - "summary": 一句话概括该实体在文中的含义（不超过 80 字）
-4. links 数组：每个元素包含：
-   - "source": 源节点 id（必须出现在 nodes 中）
-   - "target": 目标节点 id（必须出现在 nodes 中）
-   - "label": 简短关系描述（2~12 字）
-5. 节点数量不超过 30，关系数量不超过 50。
-6. 优先抽取对理解文档主干最重要的概念与因果/从属/影响关系。
+Rules:
+1. Output must be a single valid JSON object. Do not wrap it in markdown fences.
+2. Top-level keys: "nodes" and "links" only.
+3. nodes: each item has:
+   - "id": string, unique lowercase_snake_case id, e.g. "apple_inc"
+   - "name": short display name for the entity (prefer English; use the document language only if essential)
+   - "group": exactly one of: company, finance, product, risk, region, tech, person, org, metric, event, other
+   - "summary": one sentence (max ~80 words) describing what this entity means in the document
+4. links: each item has:
+   - "source": id of a node in nodes
+   - "target": id of a node in nodes
+   - "label": short relationship label (a few words)
+5. At most 30 nodes and 50 links.
+6. Prefer concepts and relations that best capture the document’s main ideas (causal, hierarchical, influence, etc.).
 
-待分析文本：
+Text to analyze:
 ---
 {text}
 ---

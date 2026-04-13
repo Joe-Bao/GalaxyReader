@@ -4,7 +4,9 @@ interface LoadingScreenProps {
   message?: string;
 }
 
-export function LoadingScreen({ message = "正在解析文档并构建知识星系…" }: LoadingScreenProps) {
+export function LoadingScreen({
+  message = "Parsing document and building the knowledge galaxy…",
+}: LoadingScreenProps) {
   return (
     <div className="pointer-events-auto fixed inset-0 z-40 flex flex-col items-center justify-center bg-black/85 backdrop-blur-md">
       <div className="relative h-40 w-40">
